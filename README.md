@@ -8,6 +8,7 @@ This project in low level programming is about:
 * gcc
 * sizeof()
 * putchar()
+* printf()
 
 ## Author
 `stefan silverio`
