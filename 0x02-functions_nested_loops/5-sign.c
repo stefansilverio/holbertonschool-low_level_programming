@@ -1,5 +1,12 @@
 #include "holberton.h"
 
+/**
+ * print_sign - check sign of number.
+ *
+ * @n: determine sign of number.
+ *
+ * Return: Always 0.
+ */
 int print_sign(int n)
 {
 	if (n > 0)
