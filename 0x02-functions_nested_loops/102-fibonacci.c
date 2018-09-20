@@ -13,15 +13,15 @@ int main(void)
 	int x = 1;
 	int y = 2;
 
-	printf("1\n");
-	printf("2\n");
+	printf("1, \n");
+	printf("2, \n");
 	while (a < 50)
 	{
 		b = x + y;
-		printf("%lu\n", b);
+		printf("%lu, \n", b);
 		if (x > y)
 			y = b;
-		else if (x < y)
+		else
 			x = b;
 		a++;
 	}
