@@ -8,17 +8,14 @@
  */
 void main(void)
 {
-	int sum;
-	int five, three, multiple;
+	int x = 3;
+	int sum = 0;
 
-	for (multiple = 1; multiple < 1024; multiple++)
+	while (x < 10)
 	{
-		five = multiple * 5;
-		three = multiple * 3;
-		if ((five % multiple) == 0)
-			sum = five + five;
-		else if ((three % multiple) == 0)
-			sum = sum + three;
+		if ((x % 3) == 0 || (x % 5) == 0)
+			sum = sum + x;
+		x++;
 	}
 	printf("%d", sum);
 	putchar('\n');
