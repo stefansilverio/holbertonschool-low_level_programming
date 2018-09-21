@@ -9,19 +9,18 @@
  */
 void print_triangle(int size)
 {
-	int height, space;
+	int hash, space;
 
 	if (size > 0)
 	{
 
-		for (height = 0; height < size; height++)
+		for (hash = 1; hash <= size; hash++)
 		{
-			for (space = size - height - 1; space > 0; space--)
+			for (space = size - hash; space > 0; space--)
 			{
 				_putchar(' ');
 			}
-			space = size - height - 1;
-			for (; space < size; space++)
+			for (; space < hash; space++)
 			{
 				_putchar('#');
 			}
