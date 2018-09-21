@@ -18,5 +18,4 @@ int _isupper(int c)
 		else if (x != c)
 			return (0);
 	}
-	return (0);
 }
