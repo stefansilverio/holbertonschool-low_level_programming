@@ -9,21 +9,25 @@
 int main(void)
 {
 	int a = 0;
-	unsigned long b;
-	int x = 1;
-	int y = 2;
+	unsigned long sum;
+	unsigned long int1 = 1;
+	unsigned long int2 = 2;
 
-	printf("1, \n");
-	printf("2, \n");
-	while (a < 50)
+	printf("1, ");
+	printf("2, ");
+	while (a < 47)
 	{
-		b = x + y;
-		printf("%lu, \n", b);
-		if (x > y)
-			y = b;
+		sum = int1 + int2;
+		if (a != 46)
+			printf("%lu, ", sum);
+		else if (a == 46)
+			printf("%lu", sum);
+		if (int1 > int2)
+			int2 = sum;
 		else
-			x = b;
+			int1 = sum;
 		a++;
 	}
+	putchar('\n');
 	return (0);
 }
