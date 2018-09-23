@@ -15,10 +15,13 @@ int main(void)
 
 	printf("1, ");
 	printf("2, ");
-	while (a < 47)
+	while (a < 48)
 	{
 		sum = int1 + int2;
-		printf("%lu, ", sum);
+		if (a != 47)
+			printf("%lu, ", sum);
+		else if (a == 47)
+			printf("%lu", sum);
 		if (int1 > int2)
 			int2 = sum;
 		else if (int2 > int1)
