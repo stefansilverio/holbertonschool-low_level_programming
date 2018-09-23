@@ -18,13 +18,10 @@ int main(void)
 	while (a < 47)
 	{
 		sum = int1 + int2;
-		if (a != 46)
-			printf("%lu, ", sum);
-		else if (a == 46)
-			printf("%lu", sum);
+		printf("%lu, ", sum);
 		if (int1 > int2)
 			int2 = sum;
-		else
+		else if (int2 > int1)
 			int1 = sum;
 		a++;
 	}
