@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#define MAX_TERM 3524578 /* max term value */
 
 /**
  * main - print fibonacci digits.
@@ -13,30 +14,19 @@ int main(void)
 	unsigned long int1 = 1;
 	unsigned long int2 = 2;
 
-	while ((int1 < 4000000) && (int2 < 4000000))
+	while ((int1 <= MAX_TERM) && (int2 <= MAX_TERM))
 	{
 		sum = int1 + int2;
-		if ((sum % 2) != 0)
-		{
-			if (int1 > int2)
-				int2 = sum;
-			else if (int2 > int1)
-				int1 = sum;
-			continue;
-		}
-		else if ((sum % 2) == 0)
-		{
-			print_sum += sum;
-			if (int1 > int2)
-				int2 = sum;
-			else if (int2 > int1)
-				int1 = sum;
-		}
-		if ((int1 < 3524578) && (int2 < 3524578))
-			printf("%lu, ", print_sum);
-		else
-			printf("%lu", print_sum);
+		if (int1 > int2)
+			int2 = sum;
+		else if (int1 < int2)
+			int1 = sum;
+		if ((int1 % 2) == 0)
+			print_sum += int1;
+		else if ((int2 % 2) == 0)
+			print_sum += int2;
 	}
+	printf("%lu", print_sum);
 	putchar('\n');
 	return (0);
 }
