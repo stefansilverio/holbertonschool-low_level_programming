@@ -3,7 +3,7 @@
 /**
  * puts_half - print half of a string.
  *
- * @str: string to be cut. 
+ * @str: string to be cut.
  *
  * Return: Always 0.
  */
@@ -21,10 +21,10 @@ void puts_half(char *str)
 		{
 			_putchar(str[check]);
 			check++;
-			
+
 		}
 	}
-	else 
+	else
 	{
 		check += 1;
 
