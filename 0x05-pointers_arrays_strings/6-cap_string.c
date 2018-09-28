@@ -9,7 +9,7 @@
  */
 char *cap_string(char *s)
 {
-	char test[] = {' ', '\t', '\n', ',', ';', '.', '!', '?', '"', '(', ')'};
+	char *test = " \t\n;,.!?\"(){}";
 	int index_s = 1;
 	int index_t;
 
