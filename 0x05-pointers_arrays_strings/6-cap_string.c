@@ -23,7 +23,7 @@ char *cap_string(char *s)
 					s[index_s] = s[index_s] - 32;
 			}
 		}
-		index_s++;
+		++index_s;
 	}
 	return (s);
 }
