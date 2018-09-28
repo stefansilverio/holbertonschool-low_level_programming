@@ -13,6 +13,8 @@ char *cap_string(char *s)
 	int index_s = 1;
 	int index_t;
 
+	if ((s[index_s - 1] >= 97) && (s[index_s - 1] <= 122))
+		s[index_s - 1] = s[index_s - 1] - 32;
 	while (s[index_s])
 	{
 		for (index_t = 0; test[index_t] > 0; index_t++)
