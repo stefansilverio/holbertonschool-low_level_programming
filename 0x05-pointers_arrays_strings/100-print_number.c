@@ -7,7 +7,6 @@
  *
  * Return: Always 0.
  */
-
 void print_number(int n)
 {
 	if ((n > 9) || (n < -9))
