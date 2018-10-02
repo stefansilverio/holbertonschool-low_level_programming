@@ -13,20 +13,23 @@
  */
 void print_diagsums(int *a, int size)
 {
-	int principal = 0;
-	int secondary = 0;
-	int i, j;
+	int index = 0;
+	int sum = 0;
 
-	for (i = 0; i < size; i++)
+	while (index < (size * size))
 	{
-		for (j = 0; j < size; j++)
-		{
-			if (i == j)
-				principal += a[i];
-			if ((i + j) == (size - 1))
-				secondary += a[i];
-		}
+		sum += a[index];
+		index += size + 1;
 	}
-	printf("principal diagonal: %d\n", principal);
-	printf("secondary diagonal: %d\n", secondary);
+	printf("%d, ", sum);
+
+	index = size - 1;
+	sum = 0;
+
+	while (index < size * size - 1)
+	{
+		sum += a[index];
+		index += size - 1;
+	}
+	printf("%d\n", sum);
 }
