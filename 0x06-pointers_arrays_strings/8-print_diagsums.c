@@ -1,4 +1,6 @@
 #include "holberton.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 /**
  * print_diagsums - function that prints diagonal sums
@@ -11,18 +13,20 @@
  */
 void print_diagsums(int *a, int size)
 {
-	int sum = 0;
+	int principal = 0;
+	int secondary = 0;
 	int i, j;
 
 	for (i = 0; i < size; i++)
 	{
 		for (j = 0; j < size; j++)
 		{
-			if ((i == j) || (i == size - j - 1))
-			{
-				sum += a[i][j];
-			}
+			if (i == j)
+				principal += a[i];
+			if ((i + j) == (size - 1))
+				secondary += a[i];
 		}
 	}
-	return (sum);
+	printf("principal diagonal: %d\n", principal);
+	printf("secondary diagonal: %d\n", secondary);
 }
