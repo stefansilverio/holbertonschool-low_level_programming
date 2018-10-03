@@ -1,5 +1,4 @@
 #include "holberton.h"
-void print_number(int n);
 
 /**
  * print_number - print an integer.
@@ -10,11 +9,27 @@ void print_number(int n);
  */
 void print_number(int n)
 {
+	int INT_MIN = -2147483648;
+
 	if ((n > 9) || (n < -9))
 	{
 		print_number(n / 10);
 		if (n < 0)
-			n = (-n);
+		{
+			if (n == INT_MIN)
+			{
+				n++;
+				n = (-n);
+				_putchar((n % 10) + 1 + '0');
+				return;
+			}
+			else
+			{
+				n = (-n);
+				_putchar((n % 10) + '0');
+				return;
+			}
+		}
 		_putchar((n % 10) + '0');
 	}
 	else
