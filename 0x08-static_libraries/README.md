@@ -9,7 +9,9 @@ This project in low level programming is about:
 ---
 File|Task
 ---|---
-0-
+0-libholberton.a | Create the static library libholberton.a
+1-create_static_lib.sh | Create a script called create_static_lib.sh that creates a static library
+2-find_lib | Script to find and compile c files
 
 ## Author
-`stefan silverio'
+`stefan silverio`
