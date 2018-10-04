@@ -1,0 +1,3 @@
+#!/bin/bash
+file=$1
+find /home/vagrant/github.com/holbertonschool-low_level_programming/ -type f -name ${file} | xargs gcc -Wall -c
