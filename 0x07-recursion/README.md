@@ -17,4 +17,5 @@ File|Task
 6-is_prime_number.c | Write a function that returns 1 if the input integer is a prime number
 7-is_palindrome.c | Write a function that returns 1 if a string is a palindrome and 0 if not
 
+## Author
 `stefan silverio`
