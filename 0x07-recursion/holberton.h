@@ -1,6 +1,8 @@
 #ifndef HEADER_FILE
 #define HEADER_FILE
 
+int _strlen_recursion(char *s);
+int _str_check(char *a, char *b);
 int helper(int test, int n);
 int _putchar(char c);
 void _puts_recursion(char *s);
