@@ -24,12 +24,8 @@ int main(int argc, char *argv[])
 		return (0);
 	}
 
-	printf("hi ");
-
 	for (index = 1; index < argc; index++)
 	{
-
-		printf("hi ");
 		if (checker(argv[index]) == 0)
 			continue;
 		else
@@ -37,13 +33,11 @@ int main(int argc, char *argv[])
 			printf("Error\n");
 			return (1);
 		}
-		printf("hi ");
 	}
 
 	for (index = 1; index < argc; index++)
 		storage += atoi(argv[index]);
 
-	printf("hi");
 	printf("%d\n", storage);
 	return (0);
 
