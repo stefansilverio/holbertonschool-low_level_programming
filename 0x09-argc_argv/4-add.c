@@ -23,6 +23,7 @@ int main(int argc, char *argv[])
 		printf("%d\n", 0);
 		return (0);
 	}
+
 	printf("hi ");
 
 	for (index = 1; index < argc - 1; index++)
@@ -32,10 +33,12 @@ int main(int argc, char *argv[])
 			printf("Error\n");
 			return (1);
 		}
+
 		printf("hi ");
-		for (sub_index = 1; *argv[sub_index] != '\0'; sub_index++)
+
+		for (sub_index = 1; *(argv[sub_index]) != '\0'; sub_index++)
 		{
-			if ((**argv++ > '9') || (**argv++ < '0'))
+			if ((*(argv[index] + sub_index) > '9') || (*(argv[index] + sub_index) < '0'))
 			{
 				printf("Error\n");
 				return (1);
