@@ -4,7 +4,7 @@
 #include <ctype.h>
 
 /**
- * main - print the multiple of two numbers
+ * main - print the sum of two numbers
  *
  * @argc: argument count
  *
@@ -14,19 +14,18 @@
  */
 int main(int argc, char *argv[])
 {
-	int empty = 0;
 	int storage = 0;
 	int index;
 
 	if (argc < 2)
 	{
-		printf("%d\n", empty);
+		printf("%d\n", 0);
 		return (0);
 	}
 
 	for (index = 1; argv[index] != '\0'; index++)
 	{
-		if (atoi(argv[index]) <= 0)
+		if (atoi(argv[index]) < 0)
 		{
 			puts("Error");
 			return (1);
