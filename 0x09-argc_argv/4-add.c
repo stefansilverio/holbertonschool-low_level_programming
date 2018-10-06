@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 
+int checker(char *string);
 /**
  * main - print the sum of two numbers
  *
@@ -16,7 +17,6 @@ int main(int argc, char *argv[])
 {
 	int storage = 0;
 	int index;
-	int sub_index;
 
 	if (argc < 2)
 	{
@@ -26,32 +26,43 @@ int main(int argc, char *argv[])
 
 	printf("hi ");
 
-	for (index = 1; index < argc - 1; index++)
+	for (index = 1; index < argc; index++)
 	{
-		if (atoi(argv[index]) < 0)
+
+		printf("hi ");
+		if (checker(argv[index]) == 0)
+			continue;
+		else
 		{
 			printf("Error\n");
 			return (1);
 		}
-
-		printf("hi ");
-
-		for (sub_index = 1; *(argv[sub_index]) != '\0'; sub_index++)
-		{
-			if ((*(argv[index] + sub_index) > '9') || (*(argv[index] + sub_index) < '0'))
-			{
-				printf("Error\n");
-				return (1);
-			}
-		}
 		printf("hi ");
 	}
 
-	for (index = 1; index < argc - 1; index++)
+	for (index = 1; index < argc; index++)
 		storage += atoi(argv[index]);
 
 	printf("hi");
 	printf("%d\n", storage);
 	return (0);
 
+}
+
+int checker(char *string)
+{
+	int sub_index;
+
+	for (sub_index = 0; (string[sub_index]) != '\0'; sub_index++)
+	{
+
+		if (((string[sub_index]) <= '9') && ((string[sub_index]) >= '0'))
+		{
+			continue;
+		}
+		else
+			return (1);
+
+	}
+	return (0);
 }
