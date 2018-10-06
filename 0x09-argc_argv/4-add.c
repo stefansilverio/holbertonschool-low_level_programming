@@ -42,7 +42,13 @@ int main(int argc, char *argv[])
 	return (0);
 
 }
-
+/**
+ * checker - print the sum of two numbers
+ *
+ * @string: argument count
+ *
+ * Return: Always 0.
+ */
 int checker(char *string)
 {
 	int sub_index;
