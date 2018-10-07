@@ -7,7 +7,7 @@ int helper(char *string);
  *
  * @argc: argument count
  *
- * @argv[]: pointer to arrary of char pointers
+ * @argv: pointer to arrary of char pointers
  *
  * Return: Always 0.
  */
