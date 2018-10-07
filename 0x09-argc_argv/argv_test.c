@@ -2,7 +2,15 @@
 #include <stdlib.h>
 
 int helper(char *string);
-
+/**
+ * main - iterate through words
+ *
+ * @argc: argument count
+ *
+ * @argv[]: pointer to arrary of char pointers
+ *
+ * Return: Always 0.
+ */
 int main(int argc, char *argv[])
 {
 	int index;
@@ -26,6 +34,13 @@ int main(int argc, char *argv[])
 	return (0);
 }
 
+/**
+ * helper - iterate through value of each char ptr
+ *
+ * @string: address to char array
+ *
+ * Return: Always 0.
+ */
 int helper(char *string)
 {
 	int sub_index;
