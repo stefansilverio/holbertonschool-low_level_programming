@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
 
 	if (argc < 3)
 	{
-		puts("Error\n");
+		printf("Error\n");
 		return (1);
 	}
 	storage = atoi(argv[argc - 1]) * atoi(argv[argc - 2]);
