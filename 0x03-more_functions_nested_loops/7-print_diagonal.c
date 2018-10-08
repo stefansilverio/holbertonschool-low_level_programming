@@ -7,28 +7,23 @@
  *
  * Return: Always 0.
  */
-void print_diagonal(int n)
+void print_diagonal(int size)
 {
-	int x;
-	int y;
+	int spaces;
+	int slashes;
 
-	if (n > 0)
+	if (size > 0)
 	{
-		for (x = 0; x < n; x++)
+		for (spaces = 0; spaces < size; spaces++)
 		{
-			for (y = 0; y < x; y++)
+			for (slashes = 0; slashes < spaces; slashes++)
 			{
 				_putchar(' ');
 			}
-			_putchar(92);
+			_putchar('\\');
 			_putchar('\n');
 		}
 	}
 	else
 		_putchar('\n');
 }
-
-
-
-
-
