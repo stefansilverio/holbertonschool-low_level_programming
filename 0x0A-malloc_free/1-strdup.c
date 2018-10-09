@@ -21,7 +21,7 @@ char *_strdup(char *str)
 	for (index = 0; str[index] != '\0'; index++)
 		size++;
 
-	buffer = malloc(size * sizeof(char));
+	buffer = malloc((size + 1) * sizeof(char));
 
 	index = 0;
 
@@ -29,7 +29,7 @@ char *_strdup(char *str)
 		return (NULL);
 
 	else
-		while (size > index)
+		while (size >= index)
 		{
 			*(buffer + index) = *(str + index);
 			index++;
