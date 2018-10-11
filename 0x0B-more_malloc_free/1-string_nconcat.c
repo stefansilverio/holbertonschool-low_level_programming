@@ -28,16 +28,16 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	while (s2[index_2] != '\0') /* space for src */
 		index_2++;
 
-	buffer = malloc((index_1 + index_2 + 1) * sizeof(char));
+	if (n >= index_2)
+                n = index_2;
+
+	buffer = malloc((index_1 + n + 1) * sizeof(char));
 
 	if (buffer == NULL)
 		return (NULL);
 
 	for (index_1 = 0; s1[index_1] != '\0'; index_1++) /* fill buffer with s1 */
 		buffer[index_1] = s1[index_1];
-
-	if (n >= index_2)
-		n = index_2;
 
 	index_2 = 0;
 
