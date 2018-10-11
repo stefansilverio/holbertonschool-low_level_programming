@@ -27,6 +27,7 @@ char *argstostr(int ac, char **av)
 
 	for (row = 0; row < ac; row++)
 	{
+		column = 0;
 		while (av[row][column])
 		{
 			column++;
