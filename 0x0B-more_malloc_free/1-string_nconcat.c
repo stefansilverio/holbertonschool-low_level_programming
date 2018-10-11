@@ -22,11 +22,16 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	if (s2 == NULL)
 		s2 = "";
 
+	if (s1 == NULL)
+		s1 = "";
+
 	while (s1[index_1] != '\0') /* space for dest */
 		index_1++;
+	printf("%d\n", index_1);
 
 	while (s2[index_2] != '\0') /* space for src */
 		index_2++;
+	printf("%d\n", index_2);
 
 	if (n > index_2)
 		n = index_2;
@@ -47,6 +52,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		index_1++;
 		index_2++;
 	}
-	buffer[index_1] = '\0';
+
 	return (buffer);
+	buffer[index_1] = '\0';
 }
