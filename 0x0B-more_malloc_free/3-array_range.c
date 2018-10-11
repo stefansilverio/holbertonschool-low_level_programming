@@ -23,6 +23,9 @@ int *array_range(int min, int max)
 	size = max - min + 1;
 	buffer = malloc((size) * sizeof(int));
 
+	if (buffer == NULL)
+		return (NULL);
+
 	for (index = 0; min <= max; min++)
 	{
 		buffer[index] = min;
