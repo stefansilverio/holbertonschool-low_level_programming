@@ -27,11 +27,9 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 
 	while (s1[index_1] != '\0') /* space for dest */
 		index_1++;
-	printf("%d\n", index_1);
 
 	while (s2[index_2] != '\0') /* space for src */
 		index_2++;
-	printf("%d\n", index_2);
 
 	if (n > index_2)
 		n = index_2;
