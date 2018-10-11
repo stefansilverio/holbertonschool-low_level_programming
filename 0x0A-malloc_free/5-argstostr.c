@@ -1,7 +1,7 @@
 #include "holberton.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
+
 
 /**
  * argstostr - concatenate all arguments in program
@@ -26,7 +26,13 @@ char *argstostr(int ac, char **av)
 	}
 
 	for (row = 0; row < ac; row++)
-		len += strlen(av[row]);
+	{
+		while (av[row][column])
+		{
+			column++;
+			len++;
+		}
+	}
 
 	str = malloc((len + ac + 1) * sizeof(char));
 
