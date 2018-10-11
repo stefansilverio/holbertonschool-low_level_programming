@@ -47,5 +47,6 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		index_1++;
 		index_2++;
 	}
+	buffer[index_1] = '\0';
 	return (buffer);
 }
