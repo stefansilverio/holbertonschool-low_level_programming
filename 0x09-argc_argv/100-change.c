@@ -60,6 +60,8 @@ int helper(int value)
  * @index: array indexer
  *
  * @coin_count: variable to count coins
+ *
+ * Return: number of coins
  */
 int count_coins(int value, int index, int coin_count) /* subtract by coin */
 {
