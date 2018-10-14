@@ -50,13 +50,6 @@ int helper(int value)
 
 	for (index = 0; index <= 4; index++)
 	{
-		if (coins[index] == 1)
-		{
-			while (value--)
-			{
-				coin_count++;
-			}
-		}
 		coin_count = count_coins(value, coins[index], coin_count);
 	}
 	return (coin_count); /* return number of coins */
@@ -66,8 +59,8 @@ int count_coins(int value, int coin_value, int coin_count) /* divide value by ea
 {
 	if (value - coin_value > 0)
 	{
-		value = value - coins_value;
-		count_coins(value, coin_value, coin_count + 1);
+		value = value - coin_value;
+		coin_count = count_coins(value, coin_value, coin_count + 1);
 	}
 	return (coin_count); /* return number of coins */
 }
