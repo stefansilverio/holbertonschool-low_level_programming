@@ -17,7 +17,7 @@ int count_coins(int value, int coin_value, int coin_count);
 int main(int argc, char *argv[])
 {
 	int index = 1;
-	int coins;
+	int cents;
 
 	if (argc != 2)
 	{
@@ -29,8 +29,8 @@ int main(int argc, char *argv[])
 		printf("0\n");
 	else
 	{
-		coins = helper(atoi(argv[index]));
-		printf("%d\n", coins);
+		cents = helper(atoi(argv[index]));
+		printf("%d\n", cents);
 	}
 	return (0);
 }
