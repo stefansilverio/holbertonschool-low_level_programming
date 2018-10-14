@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
 }
 
 /**
- * helper - count how many coins it take
+ * helper - call recursive function
  *
  * @value: number passed in
  *
@@ -44,23 +44,43 @@ int main(int argc, char *argv[])
  */
 int helper(int value)
 {
-	int coins[] = {25, 10, 5, 2, 1};
-	int index;
+	int index = 0;
 	int coin_count = 0;
 
-	for (index = 0; index <= 4; index++)
-	{
-		coin_count = count_coins(value, coins[index], coin_count);
-	}
+	coin_count = count_coins(value, index, coin_count);
+
 	return (coin_count); /* return number of coins */
 }
 
-int count_coins(int value, int coin_value, int coin_count) /* divide value by each coin */
+/**
+ * count_coins - make change
+ *
+ * @value: value to make change for
+ *
+ * @index: array indexer
+ *
+ * @coin_count: variable to count coins
+ */
+int count_coins(int value, int index, int coin_count) /* subtract by coin */
 {
-	if (value - coin_value > 0)
+	int coins[] = {25, 10, 5, 2, 1};
+
+	if (value - coins[index] >= 0)
 	{
-		value = value - coin_value;
-		coin_count = count_coins(value, coin_value, coin_count + 1);
+		value = value - coins[index];
+		coin_count = count_coins(value, index, coin_count + 1);
 	}
+
+	else if ((value - coins[index] < 0) && (index <= 4))
+	{
+		coin_count = count_coins(value, index + 1, coin_count);
+	}
+
+	else
+	{
+		if ((index == 4) && (value - coins[index] < 0))
+			return (coin_count);
+	}
+
 	return (coin_count); /* return number of coins */
 }
