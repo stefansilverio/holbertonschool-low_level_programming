@@ -3,6 +3,7 @@
 #include <stdlib.h>
 
 int helper(int value);
+int count_coins(int value, int coin_value, int coin_count);
 
 /**
  * main - return least number of coins needed for change
@@ -56,24 +57,17 @@ int helper(int value)
 				coin_count++;
 			}
 		}
-
-		coin_count = coin_count(value, coins[index], coin_count);
+		coin_count = count_coins(value, coins[index], coin_count);
 	}
 	return (coin_count); /* return number of coins */
 }
 
-int coin_count(value, coins[index], coin_count)
+int count_coins(int value, int coin_value, int coin_count) /* divide value by each coin */
 {
-	if (value / coins[index] != 0)
+	if (value - coin_value > 0)
 	{
-		return (coin_count);
+		value = value - coins_value;
+		count_coins(value, coin_value, coin_count + 1);
 	}
-
-	else
-	{
-		value = value / coins[index];
-		coin_count++;
-	}
-
-	return (coin_count);
+	return (coin_count); /* return number of coins */
 }
