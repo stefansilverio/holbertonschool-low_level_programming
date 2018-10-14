@@ -2,8 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int helper(int value);
-int count_coins(int value, int coin_value, int coin_count);
+int helper(long int value);
+int count_coins(long int value, int index, long int coin_count);
 
 /**
  * main - return least number of coins needed for change
@@ -17,7 +17,8 @@ int count_coins(int value, int coin_value, int coin_count);
 int main(int argc, char *argv[])
 {
 	int index = 1;
-	int cents;
+	long int cents;
+	long int value = atoi(argv[index]);
 
 	if (argc != 2)
 	{
@@ -25,12 +26,12 @@ int main(int argc, char *argv[])
 		return (1);
 	}
 
-	if (atoi(argv[index]) < 0)
+	if (value <= 0)
 		printf("0\n");
 	else
 	{
-		cents = helper(atoi(argv[index]));
-		printf("%d\n", cents);
+		cents = helper(value);
+		printf("%ld\n", cents);
 	}
 	return (0);
 }
@@ -42,10 +43,10 @@ int main(int argc, char *argv[])
  *
  * Return: Always 0.
  */
-int helper(int value)
+int helper(long int value)
 {
 	int index = 0;
-	int coin_count = 0;
+	long int coin_count = 0;
 
 	coin_count = count_coins(value, index, coin_count);
 
@@ -63,9 +64,9 @@ int helper(int value)
  *
  * Return: number of coins
  */
-int count_coins(int value, int index, int coin_count) /* subtract by coin */
+int count_coins(long int value, int index, long int coin_count) /* subtract */
 {
-	int coins[] = {25, 10, 5, 2, 1};
+	long int coins[] = {25, 10, 5, 2, 1};
 
 	if (value - coins[index] >= 0)
 	{
