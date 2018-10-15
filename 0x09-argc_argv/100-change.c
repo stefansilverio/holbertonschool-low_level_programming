@@ -2,13 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-<<<<<<< HEAD
-int helper(int value);
-int coin_count(value, coins[index], coin_count);
-=======
 int helper(long int value);
 int count_coins(long int value, int index, long int coin_count);
->>>>>>> 3d5f7262b6c26896530ea67f124ba0f6a7e8cad4
 
 /**
  * main - return least number of coins needed for change
