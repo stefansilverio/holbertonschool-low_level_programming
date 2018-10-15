@@ -4,16 +4,16 @@
 /**
  * ABS - absolute value
  *
- * @num: number to take abs value of
+ * @x: number to take abs value of
  *
  * Return: Always 0
  */
-int ABS(int num)
+int ABS(int x)
 {
-	if (num < 0)
-		num *= (-1);
+	if (x < 0)
+		x *= (-1);
 
-	return (num);
+	return (x);
 }
 
 #endif
