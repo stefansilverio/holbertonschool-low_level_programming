@@ -2,8 +2,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+<<<<<<< HEAD
 int helper(int value);
 int coin_count(value, coins[index], coin_count);
+=======
+int helper(long int value);
+int count_coins(long int value, int index, long int coin_count);
+>>>>>>> 3d5f7262b6c26896530ea67f124ba0f6a7e8cad4
 
 /**
  * main - return least number of coins needed for change
@@ -17,7 +22,8 @@ int coin_count(value, coins[index], coin_count);
 int main(int argc, char *argv[])
 {
 	int index = 1;
-	int coins;
+	long int cents;
+	long int value = atoi(argv[index]);
 
 	if (argc != 2)
 	{
@@ -25,56 +31,64 @@ int main(int argc, char *argv[])
 		return (1);
 	}
 
-	if (atoi(argv[index]) < 0)
+	if (value <= 0)
 		printf("0\n");
 	else
 	{
-		coins = helper(atoi(argv[index]));
-		printf("%d\n", coins);
+		cents = helper(value);
+		printf("%ld\n", cents);
 	}
 	return (0);
 }
 
 /**
- * helper - count how many coins it take
+ * helper - call recursive function
  *
  * @value: number passed in
  *
  * Return: Always 0.
  */
-int helper(int value)
+int helper(long int value)
 {
-	int coins[] = {25, 10, 5, 2, 1};
-	int index;
-	int coin_count = 0;
+	int index = 0;
+	long int coin_count = 0;
 
-	for (index = 0; index <= 4; index++)
-	{
-		if (coins[index] == 1)
-		{
-			while (value--)
-			{
-				coin_count++;
-			}
-		}
+	coin_count = count_coins(value, index, coin_count);
 
-		coin_count = coin_count(value, coins[index], coin_count);
-	}
 	return (coin_count); /* return number of coins */
 }
 
-int coin_count(value, coins[index], coin_count)
+/**
+ * count_coins - make change
+ *
+ * @value: value to make change for
+ *
+ * @index: array indexer
+ *
+ * @coin_count: variable to count coins
+ *
+ * Return: number of coins
+ */
+int count_coins(long int value, int index, long int coin_count) /* subtract */
 {
-	if (value / coins[index] != 0)
+	long int coins[] = {25, 10, 5, 2, 1};
+
+	if (value - coins[index] >= 0)
 	{
-		return (coin_count);
+		value = value - coins[index];
+		coin_count = count_coins(value, index, coin_count + 1);
+	}
+
+	else if ((value - coins[index] < 0) && (index <= 4))
+	{
+		coin_count = count_coins(value, index + 1, coin_count);
 	}
 
 	else
 	{
-		value = value / coins[index];
-		coin_count++;
+		if ((index == 4) && (value - coins[index] < 0))
+			return (coin_count);
 	}
 
-	return (coin_count);
+	return (coin_count); /* return number of coins */
 }
