@@ -17,8 +17,8 @@ dog_t *new_dog(char *name, float age, char *owner) /* return ptr to new dog */
 {
 	int index_1;
 	int index_2;
-	int fill_1 = 0;
-	int fill_2 = 0;
+	int fill_1;
+	int fill_2;
 	char *new_name;
 	char *new_owner;
 	dog_t *new_dog;
@@ -51,17 +51,15 @@ dog_t *new_dog(char *name, float age, char *owner) /* return ptr to new dog */
 		return (NULL);
 	}
 
-	while (index_1 > fill_1)
-	{
+	for (fill_1 = 0; index_1 > fill_1; fill_1++)
 		new_name[fill_1] = name[fill_1];
-		fill_1++;
-	}
 
-	while (index_2 > fill_2)
-	{
+	new_name[fill_1] = '\0';
+
+	for (fill_2 = 0; index_2 > fill_2; fill_2++)
 		new_owner[fill_2] = owner[fill_2];
-		fill_2++;
-	}
+
+	new_owner[fill_2] = '\0';
 
 	new_dog->name = new_name;
 	new_dog->owner = new_owner;
