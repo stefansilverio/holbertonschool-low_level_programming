@@ -13,7 +13,6 @@
  *
  * Return: ptr to new dog
  */
-
 dog_t *new_dog(char *name, float age, char *owner) /* return ptr to new dog */
 {
 	int index_1;
