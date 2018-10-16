@@ -49,18 +49,16 @@ dog_t *new_dog(char *name, float age, char *owner) /* return ptr to new dog */
 		return (NULL);
 	}
 
-	for (fill_1 = 0; index_1 > fill_1; fill_1++)
+	for (fill_1 = 0; index_1 >= fill_1; fill_1++)
 		new_dog->name[fill_1] = name[fill_1];
 
 	new_dog->name[fill_1] = '\0';
 
-	for (fill_2 = 0; index_2 > fill_2; fill_2++)
+	for (fill_2 = 0; index_2 >= fill_2; fill_2++)
 		new_dog->owner[fill_2] = owner[fill_2];
 
 	new_dog->owner[fill_2] = '\0';
 
-	new_dog->name = name;
-	new_dog->owner = owner;
 	new_dog->age = age;
 
 	return (new_dog);
