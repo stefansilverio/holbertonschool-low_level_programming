@@ -17,4 +17,4 @@ File|Task
 4-sum.h | Write a function-like macro SUM(x, y)
 
 ## Author
-`stefsn silverio`
+`stefan silverio`
