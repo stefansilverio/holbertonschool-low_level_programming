@@ -10,6 +10,7 @@ char **strtow(char *str)
 {
 	int index_1 = 0;
 	int count = 0;
+	int freed = 0;
 	char *buffer[];
 
 	if ((str == NULL) || (str == ""))
@@ -34,15 +35,14 @@ char **strtow(char *str)
 	if (buffer == NULL)
 		return(NULL);
 
-
-	*buffer = malloc((index_2) * (sizeof(char)));
-
 	index_1 = 0;
 
 	while (str[index_1] != '\0') /* block allocates space for characters */
 	{
 		if ((str[index_1] >= 'A') && (str[index_1] <= 'z'))
 		{
+			index_2 = 0;
+
 			while (str[index_2] != ' ')
 				index_2++;
 
@@ -63,8 +63,16 @@ char **strtow(char *str)
 		if ((str[index_1] >= 'A') && (str[index_1] <= 'z'))
 		{
 			while (str[index_2] != ' ')
-				index_2++;
-
-			while (index_2 > 0)
 			{
-buffer[
+				buffer[index_2] = str[index_2];
+				index_2++;
+			}
+
+			buffer[index_2] = '\0';
+		}
+
+			index_1++;
+	}
+
+	return (buffer);
+}
