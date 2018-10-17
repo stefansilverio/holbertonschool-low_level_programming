@@ -15,3 +15,6 @@ File|Task
 2-main.c | Write a program that prints the name of the file it was compiled from
 3-function_like_macro.h | Write a function-like macro ABS(x)
 4-sum.h | Write a function-like macro SUM(x, y)
+
+## Author
+`stefsn silverio`
