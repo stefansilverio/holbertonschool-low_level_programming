@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
 		exit(100);
 	}
 
-	if (get_op_func(op))
+	if ((get_op_func(op)) && (*(argv[2] + 1) == '\0'))
 	{
 		result = get_op_func(op)(num1, num2);
 		printf("%d\n", result);
