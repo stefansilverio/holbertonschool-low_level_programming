@@ -22,31 +22,29 @@ void print_all(const char * const format, ...)
 
 	while (format[index] != '\0')
 	{
-		if ((format[index] == 'c') || (format[index] == 'i') || (format[index] == 'f') || (format[index] == 's'))
+		switch (format[index])
 		{
-			switch (format[index])
-			{
-			case 'c':
-				printf("%c", va_arg(valist, int));
-				break;
-			case 'i':
-				printf("%d", va_arg(valist, int));
-				break;
-			case 'f':
-				printf("%f", va_arg(valist, double));
-				break;
-			case 's':
-				string = va_arg(valist, char *);
-				if (string == NULL)
-					string = "(nil)";
-				printf("%s", string);
-			}
-			while (format[index + 1] != '\0')
-			{
-				printf(", ");
-				break;
-			}
+		case 'c':
+			printf("%c", va_arg(valist, int));
+			break;
+		case 'i':
+			printf("%d", va_arg(valist, int));
+			break;
+		case 'f':
+			printf("%f", va_arg(valist, double));
+			break;
+		case 's':
+			string = va_arg(valist, char *);
+			if (string == NULL)
+				string = "(nil)";
+			printf("%s", string);
 		}
+		while (format[index + 1] != '\0')
+		{
+			printf(", ");
+			break;
+		}
+
 		index++;
 	}
 	printf("\n");
