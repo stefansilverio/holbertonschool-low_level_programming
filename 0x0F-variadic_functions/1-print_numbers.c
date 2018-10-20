@@ -22,11 +22,10 @@ void print_numbers(const char *separator, const int n, ...)
 	for (i = 0; i < n; i++)
 	{
 		printf("%d", va_arg(valist, int));
-		if ((i+1 == n) || (separator == NULL))
+		if ((i + 1 == n) || (separator == NULL))
 			continue;
 		printf("%s", separator);
 	}
-
-	va_end(valist);
 	printf("\n");
+	va_end(valist);
 }
