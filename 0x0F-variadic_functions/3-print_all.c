@@ -17,7 +17,6 @@ void print_all(const char * const format, ...)
 	char *string;
 
 	va_start(valist, format);
-
 	while ((format != NULL) && (format[index] != '\0'))
 	{
 		check = 1;
@@ -38,6 +37,7 @@ void print_all(const char * const format, ...)
 			if (string == NULL)
 				string = "(nil)";
 			printf("%s", string);
+			break;
 		default:
 			check = 0;
 			break;
