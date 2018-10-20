@@ -13,13 +13,15 @@ void print_all(const char * const format, ...)
 {
 	va_list valist;
 	int index = 0;
-	int check = 0;
+	int check = 1;
 	char *string;
 
 	va_start(valist, format);
 
 	while (format[index] != '\0')
 	{
+		check = 1;
+
 		switch (format[index])
 		{
 		case 'c':
@@ -37,15 +39,17 @@ void print_all(const char * const format, ...)
 				string = "(nil)";
 			printf("%s", string);
 		default:
-			check = 1;
+			check = 0;
 			break;
 		}
-		while ((format[index + 1] != '\0') && (check == 1))
+
+		index++;
+
+		while ((format[index] != '\0') && (check != 0))
 		{
 			printf(", ");
 			break;
 		}
-		index++;
 	}
 	printf("\n");
 	va_end(valist);
