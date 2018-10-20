@@ -5,7 +5,6 @@
 
 /**
  * print_all - print anything
- *
  * @format: list of args passed to fn
  *
  * Return: Always 0
@@ -13,9 +12,8 @@
 void print_all(const char * const format, ...)
 {
 	va_list valist;
-
 	int index = 0;
-
+	int check = 0;
 	char *string;
 
 	va_start(valist, format);
@@ -38,13 +36,15 @@ void print_all(const char * const format, ...)
 			if (string == NULL)
 				string = "(nil)";
 			printf("%s", string);
+		default:
+			check = 1;
+			break;
 		}
-		while (format[index + 1] != '\0')
+		while ((format[index + 1] != '\0') && (check == 1))
 		{
 			printf(", ");
 			break;
 		}
-
 		index++;
 	}
 	printf("\n");
