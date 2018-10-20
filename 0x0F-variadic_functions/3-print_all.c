@@ -18,7 +18,7 @@ void print_all(const char * const format, ...)
 
 	va_start(valist, format);
 
-	while (format[index] != '\0')
+	while ((format != NULL) && (format[index] != '\0'))
 	{
 		check = 1;
 
@@ -42,9 +42,7 @@ void print_all(const char * const format, ...)
 			check = 0;
 			break;
 		}
-
 		index++;
-
 		while ((format[index] != '\0') && (check != 0))
 		{
 			printf(", ");
