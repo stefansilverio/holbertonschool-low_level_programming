@@ -1,5 +1,8 @@
 #include <stdio.h>
 
+/**
+ * myStartupFun - function to execute before main
+ */
 void myStartupFun(void) __attribute__ ((constructor));
 
 void myStartupFun(void)
