@@ -4,7 +4,8 @@
 #include "lists.h"
 
 /**
- *
+ * free_list - free all nodes
+ * @head: current node
  */
 void free_list(list_t *head)
 {
