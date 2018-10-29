@@ -2,6 +2,11 @@
 #include <stdlib.h>
 #include "lists.h"
 
+/**
+ * pop_listint - delete first element in linked list
+ * @head: ptr to ptr to first node
+ * Return: data of deleted node
+ */
 int pop_listint(listint_t **head)
 {
 	listint_t *tmp = NULL;
