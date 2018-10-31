@@ -17,13 +17,10 @@ int delete_nodeint_at_index(listint_t **head, unsigned int index)
 
 	jump = *head;
 	tmp = *head;
-
 	if (head == NULL)
 		return (-1);
-
 	if (*head == NULL)
 		return (-1);
-
 	if (index == 0)
 	{
 		tmp = tmp->next;
@@ -31,19 +28,16 @@ int delete_nodeint_at_index(listint_t **head, unsigned int index)
 		*head = tmp;
 		return (1);
 	}
-
-	while ((count < index) && (tmp->next))
+	while ((count < index) && (tmp))
 	{
 		count++;
 		tmp = tmp->next;
 	}
-
 	while (move < count)
 	{
 		move++;
 		jump = jump->next; /* jump should stop one short of tmp */
 	}
-
 	if (count == index)
 	{
 		tmp = tmp->next; /* tmp is sitting one ahead of index */
