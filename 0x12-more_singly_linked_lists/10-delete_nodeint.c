@@ -34,10 +34,7 @@ int delete_nodeint_at_index(listint_t **head, unsigned int index)
 		tmp = tmp->next; /* sitting on node to delete */
 	}
 	if (!tmp)
-	{
-		free(tmp);
-		return(1);
-	}
+		return (-1);
 	while (move < count)
 	{
 		move++;
