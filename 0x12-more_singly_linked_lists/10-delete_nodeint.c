@@ -31,12 +31,17 @@ int delete_nodeint_at_index(listint_t **head, unsigned int index)
 	while ((count < index) && (tmp))
 	{
 		count++;
-		tmp = tmp->next;
+		tmp = tmp->next; /* sitting on node to delete */
+	}
+	if (!tmp)
+	{
+		free(tmp);
+		return(1);
 	}
 	while (move < count)
 	{
 		move++;
-		jump = jump->next; /* jump should stop one short of tmp */
+		jump = jump->next; /* one short of tmp */
 	}
 	if (count == index)
 	{
