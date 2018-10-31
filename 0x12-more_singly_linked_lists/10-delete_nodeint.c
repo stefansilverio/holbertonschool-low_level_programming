@@ -2,6 +2,12 @@
 #include <stdlib.h>
 #include "lists.h"
 
+/**
+ * delete_nodeint_at_index - delete a node a a given index
+ * @head: head node of list
+ * @index: index where to delete node
+ * Return: exit status
+ */
 int delete_nodeint_at_index(listint_t **head, unsigned int index)
 {
 	unsigned int count = 0;
@@ -9,12 +15,14 @@ int delete_nodeint_at_index(listint_t **head, unsigned int index)
 	listint_t *tmp = NULL;
 	listint_t *jump = NULL;
 
-	if (*head == NULL)
+	jump = *head;
+	tmp = *head;
+
+	if (head == NULL)
 		return (-1);
 
-	jump = *head;
-
-	tmp = *head;
+	if (*head == NULL)
+		return (-1);
 
 	if (index == 0)
 	{
