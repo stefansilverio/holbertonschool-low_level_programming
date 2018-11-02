@@ -2,10 +2,10 @@
 #include "holberton.h"
 
 /**
- * clear_bit - clears
- * @n: clear
- * @index: clear
- * Return: clear
+ * clear_bit - clear but at given index
+ * @n: ptr to number
+ * @index: clear bit at this index
+ * Return: exit status
  */
 int clear_bit(unsigned long int *n, unsigned int index)
 {
@@ -16,11 +16,6 @@ int clear_bit(unsigned long int *n, unsigned int index)
 
 	if (n == NULL)
 		return (-1);
-	if (index == 0)
-	{
-		*n = *n << 1;
-		return (1);
-	}
 
 	mask = mask << index;
 	mask = ~mask;
