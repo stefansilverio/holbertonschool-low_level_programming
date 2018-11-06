@@ -31,10 +31,13 @@ ssize_t read_textfile(const char *filename, size_t letters)
 
 	count = read(status, buffer, letters);
 
-	if (count < 0)
+	if (count == -1)
 		return (0);
 
-	write(STDOUT_FILENO, buffer, letters);
+	count =	write(STDOUT_FILENO, buffer, letters);
+
+	if (count == -1)
+		return (0);
 
 	return (count);
 }
