@@ -4,6 +4,8 @@
 #include "holberton.h"
 #include <unistd.h>
 
+void closed(char *buffer, int status, int fd1, int fd2);
+
 /**
  * main - cp file contents into other file
  * @argc: argument count
@@ -26,7 +28,7 @@ int main(int argc, char *argv[])
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
-	fd1 = open(argv[1], O_RDONLY); /* if file exists truncate */
+	fd1 = open(argv[1], O_RDONLY); /* read from f1 */
 	if (fd1 == -1)
 	{
 		puts("1");
@@ -49,6 +51,20 @@ int main(int argc, char *argv[])
 	}
 	status = write(fd2, buffer, 1024); /* write from buffer to second file */
 	write(fd2, "\n", 1);
+	closed(buffer, status, fd1, fd2);
+	return (0);
+}
+
+/**
+ * closed - close file descriptors and free buffers
+ * @buffer: buffer to free
+ * @status: status of write call
+ * @fd1: file descriptor 1
+ * @fd2: file descriptor 2
+ * Return: Nothing
+ */
+void closed(char *buffer, int status, int fd1, int fd2)
+{
 	if (status == -1)
 	{
 		puts("4");
@@ -77,4 +93,4 @@ int main(int argc, char *argv[])
 		dprintf(STDERR_FILENO, "Error: Can't close fd fd2\n");
 	}
 	free(buffer);
-	return (0); }
+}
