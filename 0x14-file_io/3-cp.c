@@ -4,6 +4,12 @@
 #include "holberton.h"
 #include <unistd.h>
 
+/**
+ * main - cp file contents into other file
+ * @argc: argument count
+ * @argv: array of command line arguments
+ * Return: exit status
+ */
 int main(int argc, char *argv[])
 {
 	int fd1 = 0;
