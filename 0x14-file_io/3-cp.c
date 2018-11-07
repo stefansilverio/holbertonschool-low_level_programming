@@ -4,7 +4,7 @@
 #include "holberton.h"
 #include <unistd.h>
 
-void closed(int status, int fd1, int fd2);
+void closed(int status, int fd1, int fd2, char *arg);
 
 /**
  * main - cp file contents into other file
@@ -26,18 +26,21 @@ int main(int argc, char *argv[])
 	if (argc != 3)
 	{
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
+		free(buffer);
 		exit(97);
 	}
 	fd1 = open(argv[1], O_RDONLY); /* read from f1 */
 	if (fd1 == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file incitatous\n");
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+		free(buffer);
 		exit(98);
 	}
 	fd2 = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664); /* open fi */
 	if (fd2 == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file Incitatous\n");
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[2]);
+		free(buffer);
 		exit(98);
 	}
 	count = read(fd1, buffer, 1024); /* read from first file into buffer */
@@ -46,18 +49,20 @@ int main(int argc, char *argv[])
 		count = read(fd1, buffer, 1024); /* read from first file into buffer */
 		if (count == -1)
 		{
-			dprintf(STDERR_FILENO, "Error: Can't read from file incitatous\n");
+			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+			free(buffer);
 			exit(98);
 		}
 		status = write(fd2, buffer, 1024); /* write from buffer to second file */
 		if (status == -1)
 		{
-			dprintf(STDERR_FILENO, "Error: can't write to Incitatous\n");
+			dprintf(STDERR_FILENO, "Error: can't write to %s\n", argv[2]);
+			free(buffer);
 			exit(99);
 		}
 	}
 	free(buffer);
-	closed(status, fd1, fd2);
+	closed(status, fd1, fd2, argv[2]);
 	return (0);
 }
 
@@ -66,26 +71,27 @@ int main(int argc, char *argv[])
  * @status: status of write call
  * @fd1: file descriptor 1
  * @fd2: file descriptor 2
+ * @arg: argument for err
  * Return: Nothing
  */
-void closed(int status, int fd1, int fd2)
+void closed(int status, int fd1, int fd2, char *arg)
 {
 	if (status == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't write to Incitatous\n");
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", arg);
 		exit(99);
 	}
 	status = close(fd1);
 	if (status == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd fd1\n");
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd1);
 		exit(100);
 	}
 	close(fd1);
 	status = close(fd2);
 	if (status == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd fd2\n");
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd2);
 		exit(100);
 	}
 	close(fd2);
