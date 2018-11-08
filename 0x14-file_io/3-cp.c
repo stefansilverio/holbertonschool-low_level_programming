@@ -49,7 +49,11 @@ int main(int argc, char *argv[])
 			break;
 
 		status_write = write(fd2, buffer, status_read);
-		if (status_write == -1)
+
+		if (status_write <= 0)
+			no_write_f2(argv[2], buffer);
+
+		if (status_write < status_read)
 			no_write_f2(argv[2], buffer);
 	}
 
