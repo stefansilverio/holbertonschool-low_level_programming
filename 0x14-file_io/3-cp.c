@@ -28,6 +28,9 @@ int main(int argc, char *argv[])
 
 	buffer = malloc(sizeof(char) * 1024);
 
+	if (buffer == NULL)
+		return (-1);
+
 	fd1 = open(argv[1], O_RDONLY);
 
 	if (fd1 == -1)
@@ -53,7 +56,7 @@ int main(int argc, char *argv[])
 		if (status_write <= 0)
 			no_write_f2(argv[2], buffer);
 
-		if (status_write < status_read)
+		if (status_write != status_read)
 			no_write_f2(argv[2], buffer);
 	}
 
