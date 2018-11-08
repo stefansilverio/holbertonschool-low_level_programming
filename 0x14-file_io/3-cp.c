@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
 
 	if (argc != 3)
 	{
-		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
+		dprintf(STDERR_FILENO, "Usage: cp %s %s\n", argv[1], argv[2]);
 		exit(97);
 	}
 
@@ -38,12 +38,13 @@ int main(int argc, char *argv[])
 	if (fd2 == -1)
 		no_read_create_f1(fd2, argv[2], buffer);
 
-	status_read = read(fd1, buffer, 1024);
+	while (status_read != 0)
+	{
+		status_read = read(fd1, buffer, 1024);
 
-	if (status_read == -1)
-		no_read_create_f1(fd1, argv[1], buffer);
+		if (status_read == -1)
+			no_read_create_f1(fd1, argv[1], buffer);
 
-	do {
 		status_write = write(fd2, buffer, 1024);
 		if (status_write == -1)
 		{
@@ -51,8 +52,7 @@ int main(int argc, char *argv[])
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 			exit(99);
 		}
-		status_read = read(fd1, buffer, 1024);
-	} while ((status_read != 0) && (status_read != -1)); /* while stuff in fi */
+	}
 
 	free(buffer);
 	status_read = close(fd1);
