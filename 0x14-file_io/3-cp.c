@@ -1,98 +1,98 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include <fcntl.h>
 #include "holberton.h"
-#include <unistd.h>
 
-void closed(int status, int fd1, int fd2, char *arg);
+void no_read_create_f1(int fd1, char *arg, char *buffer);
+void close_fail(int fd1, char *buffer);
 
 /**
- * main - cp file contents into other file
+ * main - copy content to another file
  * @argc: argument count
- * @argv: array of command line arguments
+ * @argv: number of command line arguments
  * Return: exit status
  */
 int main(int argc, char *argv[])
 {
-	int fd1 = 0;
-	int fd2 = 0;
+	int fd1, fd2;
+	int  status_read = 1;
+	int status_write = 0;
 	char *buffer = NULL;
-	int status = 0;
-	int count = 0;
 
-	buffer = malloc(sizeof(char) * 1024); /* allocate buffer size */
-	if (buffer == NULL)
-		return (0);
 	if (argc != 3)
 	{
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
-		free(buffer);
 		exit(97);
 	}
-	fd1 = open(argv[1], O_RDONLY); /* read from f1 */
+
+	buffer = malloc(sizeof(char) * 1024);
+
+	fd1 = open(argv[1], O_RDONLY);
+
 	if (fd1 == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-		free(buffer);
-		exit(98);
-	}
-	fd2 = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664); /* open fi */
+		no_read_create_f1(fd1, argv[1], buffer);
+
+	fd2 = open(argv[2], O_CREAT | O_TRUNC | O_WRONLY, 0664);
+
 	if (fd2 == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[2]);
-		free(buffer);
-		exit(98);
-	}
-	count = read(fd1, buffer, 1024); /* read from first file into buffer */
-	while (count != 0)
-	{
-		count = read(fd1, buffer, 1024); /* read from first file into buffer */
-		if (count == -1)
+		no_read_create_f1(fd2, argv[2], buffer);
+
+	status_read = read(fd1, buffer, 1024);
+
+	if (status_read == -1)
+		no_read_create_f1(fd1, argv[1], buffer);
+
+	do {
+		status_write = write(fd2, buffer, 1024);
+		if (status_write == -1)
 		{
-			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 			free(buffer);
-			exit(98);
-		}
-		status = write(fd2, buffer, 1024); /* write from buffer to second file */
-		if (status == -1)
-		{
-			dprintf(STDERR_FILENO, "Error: can't write to %s\n", argv[2]);
-			free(buffer);
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 			exit(99);
 		}
-	}
+		status_read = read(fd1, buffer, 1024);
+	} while ((status_read != 0) && (status_read != -1)); /* while stuff in fi */
+
 	free(buffer);
-	closed(status, fd1, fd2, argv[2]);
+	status_read = close(fd1);
+	if (fd1 == -1)
+		close_fail(fd1, buffer);
+	status_read = close(fd2);
+	if (fd2 == -1)
+		close_fail(fd2, buffer);
 	return (0);
 }
 
 /**
- * closed - close file descriptors and free buffers
- * @status: status of write call
+ * no_read_create_f1 - exit if can't open file_from
  * @fd1: file descriptor 1
- * @fd2: file descriptor 2
- * @arg: argument for err
+ * @arg: name of file to print
+ * @buffer: buffer to free
  * Return: Nothing
  */
-void closed(int status, int fd1, int fd2, char *arg)
+void no_read_create_f1(int fd1, char *arg, char *buffer)
 {
-	if (status == -1)
+	if (fd1 == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", arg);
-		exit(99);
+		free(buffer);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", arg);
+		exit(98);
 	}
-	status = close(fd1);
-	if (status == -1)
+}
+
+/**
+ * close_fail - check for failures on close
+ * @fd1: file descriptor
+ * @buffer: buffer to free
+ * Return: Nothing
+ */
+void close_fail(int fd1, char *buffer)
+{
+	if (fd1 == -1)
 	{
+		free(buffer);
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd1);
 		exit(100);
 	}
-	close(fd1);
-	status = close(fd2);
-	if (status == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd2);
-		exit(100);
-	}
-	close(fd2);
 }
