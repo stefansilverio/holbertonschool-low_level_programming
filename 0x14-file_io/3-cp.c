@@ -16,7 +16,7 @@ void close_fail(int fd1, char *buffer);
 int main(int argc, char *argv[])
 {
 	int fd1, fd2;
-	int  status_read = 1;
+	int status_read = 1;
 	int status_write = 0;
 	char *buffer = NULL;
 
@@ -45,7 +45,10 @@ int main(int argc, char *argv[])
 		if (status_read == -1)
 			no_read_create_f1(fd1, argv[1], buffer);
 
-		status_write = write(fd2, buffer, 1024);
+		if (status_read == 0)
+			break;
+
+		status_write = write(fd2, buffer, status_read);
 		if (status_write == -1)
 		{
 			free(buffer);
