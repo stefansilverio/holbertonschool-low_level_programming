@@ -57,10 +57,10 @@ int main(int argc, char *argv[])
 	free(buffer);
 	status_read = close(fd1);
 	if (status_read == -1)
-		close_fail(status_read, buffer);
+		close_fail(fd1, buffer);
 	status_read = close(fd2);
 	if (status_read == -1)
-		close_fail(status_read, buffer);
+		close_fail(fd2, buffer);
 	return (0);
 }
 
