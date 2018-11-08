@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
 	if (fd2 == -1)
 		no_write_f2(argv[2], buffer);
 
-	while (status_read > 0)
+	while (status_read >= 0)
 	{
 		status_read = read(fd1, buffer, 1024);
 
@@ -53,7 +53,7 @@ int main(int argc, char *argv[])
 
 		status_write = write(fd2, buffer, status_read);
 
-		if (status_write <= 0)
+		if (status_write == -1)
 			no_write_f2(argv[2], buffer);
 
 		if (status_write != status_read)
@@ -61,12 +61,12 @@ int main(int argc, char *argv[])
 	}
 
 	free(buffer);
-	fd1 = close(fd1);
-	if (fd1 == -1)
-		close_fail(fd1, buffer);
-	fd2 = close(fd2);
-	if (fd2 == -1)
-		close_fail(fd2, buffer);
+	status_write = close(fd1);
+	if (status_write == -1)
+		close_fail(status_write, buffer);
+	status_write = close(fd2);
+	if (status_write == -1)
+		close_fail(status_write, buffer);
 	return (0);
 }
 /**
