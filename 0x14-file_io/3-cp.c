@@ -35,12 +35,12 @@ int main(int argc, char *argv[])
 	if (fd1 == -1)
 		no_read_f1(argv[1], buffer);
 
-	fd2 = open(argv[2], O_CREAT | O_TRUNC | O_WRONLY, 0664);
+	fd2 = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
 
 	if (fd2 == -1)
 		no_write_f2(argv[2], buffer);
 
-	while (status_read != 0)
+	while (status_read >= 0)
 	{
 		status_read = read(fd1, buffer, 1024);
 
@@ -51,6 +51,9 @@ int main(int argc, char *argv[])
 			break;
 
 		status_write = write(fd2, buffer, status_read);
+
+		if (status_read != status_write)
+			no_write_f2(argv[2], buffer);
 
 		if (status_write == -1)
 			no_write_f2(argv[2], buffer);
