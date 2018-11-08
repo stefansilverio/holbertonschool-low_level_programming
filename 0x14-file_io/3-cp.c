@@ -61,8 +61,12 @@ int main(int argc, char *argv[])
 	if (close(fd1) < 0)
 		close_fail(fd1, buffer);
 
+	close(fd1);
+
 	if (close(fd2) < 0)
 		close_fail(fd2, buffer);
+
+	close(fd2);
 
 	return (0);
 }
