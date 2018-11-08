@@ -18,11 +18,13 @@ int main(int argc, char *argv[])
 	int fd1, fd2;
 	int status_read = 1;
 	int status_write = 0;
+	int close1 = 0;
+	int close2 = 0;
 	char *buffer = NULL;
 
 	if (argc != 3)
 	{
-		dprintf(STDERR_FILENO, "Usage: cp %s %s\n", argv[1], argv[2]);
+		dprintf(STDERR_FILENO, "Usage: cp file_from file_to");
 		exit(97);
 	}
 
@@ -55,12 +57,14 @@ int main(int argc, char *argv[])
 	}
 
 	free(buffer);
-	status_read = close(fd1);
-	if (status_read == -1)
+	close1 = close(fd1);
+	if (close1 == -1)
 		close_fail(fd1, buffer);
-	status_read = close(fd2);
-	if (status_read == -1)
+	close(fd1);
+	close2 = close(fd2);
+	if (close2 == -1)
 		close_fail(fd2, buffer);
+	close(fd2);
 	return (0);
 }
 
