@@ -51,23 +51,16 @@ int main(int argc, char *argv[])
 		status_write = write(fd2, buffer, status_read);
 
 		if (status_read != status_write)
-			break;
+			no_write_f2(argv[2], buffer);
 
 		if (status_write == -1)
 			no_write_f2(argv[2], buffer);
 	}
-	free(buffer);
-
 	if (close(fd1) < 0)
 		close_fail(fd1, buffer);
-
-	close(fd1);
-
 	if (close(fd2) < 0)
 		close_fail(fd2, buffer);
-
-	close(fd2);
-
+	free(buffer);
 	return (0);
 }
 
