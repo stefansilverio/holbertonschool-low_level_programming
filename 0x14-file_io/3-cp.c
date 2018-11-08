@@ -51,7 +51,7 @@ int main(int argc, char *argv[])
 		status_write = write(fd2, buffer, status_read);
 
 		if (status_read != status_write)
-			no_write_f2(argv[2], buffer);
+			break;
 
 		if (status_write == -1)
 			no_write_f2(argv[2], buffer);
