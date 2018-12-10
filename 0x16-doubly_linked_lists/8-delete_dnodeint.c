@@ -16,7 +16,7 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 	curr = *head;
 	if (index == 0)
 	{
-		if (curr->next == NULL) /* if there's only one node */
+		if (curr->next == NULL)
 		{
 			free(curr);
 			*head = NULL;
@@ -27,6 +27,10 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 		*head = tmp;
 		tmp->prev = NULL;
 		return (1);
+	}
+	if (curr->next == NULL)
+	{
+		return (-1);
 	}
 	while (curr->next->next) /* find place to stop */
 	{
@@ -43,14 +47,5 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 			curr = curr->next;
 			count++; }
 	}
-	if ((curr->next) && (count + 1 == index))
-	{
-		free(curr->next);
-		curr->next = NULL;
-		return (1);
-	}
-	else if (count != index)
-		return (-1);
-
 	return (-1);
 }
