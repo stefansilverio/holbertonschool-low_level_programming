@@ -9,10 +9,9 @@
 int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 {
 	unsigned int count = 0;
-	dlistint_t *tmp = NULL;
-	dlistint_t *curr = NULL;
+	dlistint_t *tmp = NULL, *curr = NULL;
 
-	if (*head == NULL)
+	if ((*head == NULL) || (head == NULL))
 		return (-1);
 	curr = *head;
 	if (index == 0)
@@ -23,13 +22,13 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 			*head = NULL;
 			return (1);
 		}
-		free(*head);
 		tmp = curr->next; /* multiple nodes */
+		free(*head);
 		*head = tmp;
 		tmp->prev = NULL;
 		return (1);
 	}
-	while (curr->next->next)
+	while (curr->next->next) /* find place to stop */
 	{
 		if (count + 1 == index)
 		{
@@ -42,14 +41,11 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 		else
 		{
 			curr = curr->next;
-			count++;
-		}
+			count++; }
 	}
 	if ((curr->next) && (count + 1 == index))
 	{
 		free(curr->next);
 		curr->next = NULL;
-		return (1);
-	}
-	return (-1);
-}
+		return (1); }
+	return (-1); }
