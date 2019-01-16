@@ -1,6 +1,12 @@
 #include "hash_tables.h"
-#include <string.h>
 
+/**
+ * hash_table_delete - delete hash table
+ *
+ * @ht: hash table
+ *
+ * Return: Nothing
+ */
 void hash_table_delete(hash_table_t *ht)
 {
 	unsigned long int idx = 0;
@@ -9,8 +15,9 @@ void hash_table_delete(hash_table_t *ht)
 	new_node = ht->array[idx];
 	curr = new_node;
 
-	while (idx < ht->size)
+	while (idx < (ht->size))
 	{
+		idx++;
 		if ((curr) == 0)
 			continue;
 		else
@@ -22,7 +29,6 @@ void hash_table_delete(hash_table_t *ht)
 				curr = new_node;
 			}
 		}
-		idx++;
 	}
 	free(ht);
 }
