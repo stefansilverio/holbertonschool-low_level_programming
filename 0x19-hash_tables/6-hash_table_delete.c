@@ -23,7 +23,6 @@ void hash_table_delete(hash_table_t *ht)
 		{
 			while (curr)
 			{
-				printf("%lu\n", idx);
 				new_node = curr->next;
 				free(curr->key);
 				free(curr->value);
