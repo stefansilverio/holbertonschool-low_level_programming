@@ -4,6 +4,3 @@
 [submodule "holbertonschool-low_level_programming"]
 	path = holbertonschool-low_level_programming
 	url = git@github.com:stefansilverio/holbertonschool-low_level_programming.git
-[submodule "0x1A-sorting_algorithms"]
-	path = 0x1A-sorting_algorithms
-	url = git@github.com:stefansilverio/0x1A-sorting_algorithms.git
