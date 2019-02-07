@@ -27,4 +27,6 @@ void _swap(listint_t *bigger, listint_t *smaller, listint_t **head);
 void _switch(int *array, int mindex, int old_min);
 int partition(int *array, int lo, int hi, size_t size);
 void _qsort(int *array, int lo, int hi, size_t size);
+void cocktail_sort_list(listint_t **list);
+void _swap(listint_t *bigger, listint_t *smaller, listint_t **head);
 #endif
