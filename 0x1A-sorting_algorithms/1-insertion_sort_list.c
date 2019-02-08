@@ -11,6 +11,9 @@ void insertion_sort_list(listint_t **list)
 {
 	listint_t *back = NULL, *curr;
 
+	curr = *list;
+	if (curr->next == NULL)
+		return;
 	for (curr = *list; curr; curr = curr->next)
 	{
 /*		printf("current is %d\n", curr->n); */
