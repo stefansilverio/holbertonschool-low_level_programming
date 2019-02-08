@@ -44,7 +44,7 @@ void cocktail_sort_list(listint_t **list)
  *
  *Return: Void.
  */
-void _swap(listint_t *bigger, listint_t *smaller, listint_t **head)
+void _el_swapo(listint_t *bigger, listint_t *smaller, listint_t **head)
 {
 	if (smaller->next != NULL) /* not end of list */
 	smaller->next->prev = bigger;
