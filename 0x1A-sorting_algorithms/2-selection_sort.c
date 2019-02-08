@@ -15,12 +15,12 @@ void selection_sort(int *array, size_t size)
 	if (array == NULL || size == 1)
 		return;
 
-	while (array[i])
+	while ((unsigned int)i < size) /* while i is not at end */
 	{
 		min_value = array[i]; /* compare each k with cur position*/
 		flag = 0;
 
-		for (k = i; array[k]; k++) /*k = i so we dont starting over*/
+		for (k = i; array[k]; k++) /* k = i so we don't start over */
 		{
 			if (array[k] <= min_value)
 			{
