@@ -37,7 +37,7 @@ void cocktail_sort_list(listint_t **list)
 	}
 }
 /**
- *_swap - swap nodes of a linked list
+ *_el_swapo - swap nodes of a linked list
  *@head: head of the list
  *@bigger: first node to be swapped
  *@smaller: second node to be swapped
