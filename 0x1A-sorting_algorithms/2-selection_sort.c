@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "sort.h"
 
 /**
@@ -12,6 +11,9 @@ void selection_sort(int *array, size_t size)
 {
 	int i = 0, flag, k;
 	int min_value, new_min_pos = 0;
+
+	if (array == NULL || size == 1)
+		return;
 
 	while (array[i])
 	{
