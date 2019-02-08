@@ -9,7 +9,17 @@
 void quick_sort(int *array, size_t size)
 {
 	int lo = 0, hi = size - 1;
+	unsigned int i;
 
+	for (i = 0; i < size; i++)
+	{
+		if (array[0] == array[i])
+			continue;
+		else
+			break;
+	}
+	if (i == size)
+		return;
 	_qsort(array, lo, hi, size);
 }
 
