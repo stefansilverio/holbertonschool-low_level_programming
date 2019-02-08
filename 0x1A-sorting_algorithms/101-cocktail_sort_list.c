@@ -27,10 +27,10 @@ void cocktail_sort_list(listint_t **list)
 		}
 		while (node->prev)
 		{
-			if (node->n < node->prev->n)
+			if (node->next && node->n > node->next->n)
 			{
 				sorted = 0;
-				_swap(node->prev, node, list);
+				_swap(node, node->next, list);
 			}
 			node = node->prev;
 		}
@@ -46,19 +46,19 @@ void cocktail_sort_list(listint_t **list)
  */
 void _swap(listint_t *bigger, listint_t *smaller, listint_t **head)
 {
-        if (smaller->next != NULL) /* not end of list */
-                smaller->next->prev = bigger;
+	if (smaller->next != NULL) /* not end of list */
+	smaller->next->prev = bigger;
 
-        bigger->next = smaller->next;
-        smaller->next = bigger;
-        smaller->prev = bigger->prev;
+	bigger->next = smaller->next;
+	smaller->next = bigger;
+	smaller->prev = bigger->prev;
 
-        if (bigger->prev == NULL)
-                *head = smaller;
-        else
-                bigger->prev->next = smaller;
+	if (bigger->prev == NULL)
+		*head = smaller;
+	else
+		bigger->prev->next = smaller;
 
-        bigger->prev = smaller;
+	bigger->prev = smaller;
 
-        print_list(*head);
+	print_list(*head);
 }
