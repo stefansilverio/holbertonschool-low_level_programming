@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-CC=gcc
-SRC=*.c
+"CC"=gcc
+"SRC"=*.c
 all: $(SRC)
 	$(CC) main.c holberton.c -o holberton
