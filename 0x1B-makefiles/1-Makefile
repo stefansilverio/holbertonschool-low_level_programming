@@ -1,4 +1,3 @@
-#!/usr/bin/env bash
 CC=gcc
 SRC=holberton.c main.c
 all: $(SRC)
