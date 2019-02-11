@@ -1,4 +1,3 @@
-#!/usr/bin/env bash
 CC=gcc
 SRC= main.c holberton.c
 OBJ= $(SRC:.c=.o)
