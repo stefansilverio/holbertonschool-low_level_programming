@@ -10,7 +10,6 @@ clean:
 	$(RM) *~ holberton
 oclean:
 	$(RM) main.o holberton.o
-fclean:
-	$(RM) *~ holberton
-	$(RM) main.o holberton.o
+fclean: clean oclean
+
 re: oclean all
