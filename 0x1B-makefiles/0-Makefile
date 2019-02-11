@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+all: main.c holberton.c
+	gcc -o holberton main.c holberton.c -I.
