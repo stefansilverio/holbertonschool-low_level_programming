@@ -4,11 +4,11 @@
 
 def island_perimeter(grid):
     """return perimeter of my island"""
+
+    if grid is None or isinstance(grid, list) is False:
+        return count
     row_len = len(grid[0])
     count = 0
-
-    if grid is None or isinstance(grid, list) not True:
-        return count
     for i in range(4):
         for j in range(row_len):
             if grid[i][j] is 1 and count < 100:
