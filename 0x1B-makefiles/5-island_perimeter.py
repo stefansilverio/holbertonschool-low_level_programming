@@ -5,7 +5,7 @@
 def island_perimeter(grid):
     """return perimeter of my island"""
 
-    if grid is None or len(grid) == 0:
+    if type(grid) != list or len(grid) == 0:
         return 0
     count = 0
     for i in range(len(grid)):
@@ -22,7 +22,7 @@ def island_perimeter(grid):
 def check_per(count, i, j, grid):
     """check square perimeter"""
     try:
-        if grid[i][j-1] is 0:
+        if grid[i][j-1] == 0 or j == 0:
             count += 1
     except Exception:
         count += 1
@@ -32,7 +32,7 @@ def check_per(count, i, j, grid):
     except Exception:
         count += 1
     try:
-        if grid[i-1][j] is 0:
+        if grid[i-1][j] == 0 or i == 0:
             count += 1
     except Exception:
         count += 1
