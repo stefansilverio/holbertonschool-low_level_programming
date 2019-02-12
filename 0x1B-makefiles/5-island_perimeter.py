@@ -5,14 +5,17 @@
 def island_perimeter(grid):
     """return perimeter of my island"""
 
-    if grid is None or isinstance(grid, list) is False:
+    if grid is None or len(grid) == 0:
         return 0
-    row_len = len(grid[0])
+    if type(grid) != list:
+        return 0
     count = 0
-    for i in range(4):
-        for j in range(row_len):
+    for i in range(len(grid)):
+        for j in range(len(grid[0])):
             if grid[i][j] is 1:
                 count = check_per(count, i, j, grid)
+    if (count == 1):
+        return 4
     return count
 
 
