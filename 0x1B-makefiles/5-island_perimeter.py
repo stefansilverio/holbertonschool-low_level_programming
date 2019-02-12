@@ -18,21 +18,21 @@ def check_per(count, i, j, grid):
     try:
         if grid[i][j-1] is 0:
             count += 1
-    except IndexError:
+    except Exception:
         count += 1
     try:
         if grid[i][j+1] is 0:
             count += 1
-    except IndexError:
+    except Exception:
         count += 1
     try:
         if grid[i-1][j] is 0:
             count += 1
-    except IndexError:
+    except Exception:
         count += 1
     try:
         if grid[i+1][j] is 0:
             count += 1
-    except IndexError:
+    except Exception:
         count += 1
     return count
