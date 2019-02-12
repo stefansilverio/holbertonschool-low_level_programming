@@ -8,7 +8,7 @@ def island_perimeter(grid):
     count = 0
     for i in range(4):
         for j in range(row_len):
-            if grid[i][j] is 1:
+            if grid[i][j] is 1 and count < 100:
                 count = check_per(count, i, j, grid)
     return count
 
