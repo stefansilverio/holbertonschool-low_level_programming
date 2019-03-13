@@ -1,34 +1,36 @@
 #include "binary_trees.h"
+/**
+ * binary_tree_insert_left - insert node left
+ * @parent: ptr to node to insert left child in
+ * @value: value to insert in node
+ * Return: ptr to create node
+ */
 
 binary_tree_t *binary_tree_insert_left(binary_tree_t *parent, int value)
 {
-	binary_tree_t* curr = parent; /* 2nd reference to head */
-	binary_tree_t* new_node = malloc(sizeof(binary_tree_t));
+	binary_tree_t *new_node = malloc(sizeof(binary_tree_t));
+	binary_tree_t *curr = NULL;
 
-        if (new_node == NULL)
-                return (NULL);
+	if (new_node == NULL)
+		return (NULL);
 
-        new_node->n = value; /* set value in new_node */
+	new_node->n = value;
+	new_node->left = NULL;
+	new_node->right = NULL;
+	new_node->parent = parent;
 
-        if (parent == NULL)
-        {
-                parent = new_node;
-                return (parent);
-        }
-	if (!parent->left)
+	if (parent->left)
+	{
+		curr = parent->left;
+		new_node->left = curr;
+		parent->left = new_node;
+		curr->parent = new_node;
+	}
+
+	else
 	{
 		parent->left = new_node;
-		new_node->parent = parent;
-		return (parent->left);
 	}
-	if (parent->left) /* there are existing child nodes */
-        {
-		curr = parent->left; /* save grandchild node in curr */
-		parent->left = new_node; /* make parent point to new child */
-		new_node->left = curr; /* add grandchild */
-		curr->parent = new_node;
-		new_node->parent = parent; /* set link back to parent */
-		return (parent->left);
-	}
-	return (NULL);
+
+	return (parent->left);
 }
