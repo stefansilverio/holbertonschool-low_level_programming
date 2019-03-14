@@ -15,11 +15,9 @@ int binary_tree_is_perfect(const binary_tree_t *tree)
 
 	if (tree->left)
 		hl = binary_tree_left(tree->left);
-	printf("hl %d\n", hl);
 
 	if (tree->right)
 		hr = binary_tree_right(tree->right);
-	printf("hr %d\n", hr);
 
 	if (hl != hr)
 		return (0);
