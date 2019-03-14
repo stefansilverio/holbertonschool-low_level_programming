@@ -22,12 +22,9 @@ int binary_tree_is_perfect(const binary_tree_t *tree)
 		return (0);
 	if (tree->right)
 		status = binary_tree_is_perfect(tree->right);
-
 	if (!status)
 		return (0);
-
 	node = binary_tree_is_full(tree);
-
 	if (node)
 		return (1);
 	return (0);
