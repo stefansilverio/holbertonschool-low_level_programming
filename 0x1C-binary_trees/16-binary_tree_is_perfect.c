@@ -15,14 +15,19 @@ int binary_tree_is_perfect(const binary_tree_t *tree)
 
 	if (tree->left)
 		hl = binary_tree_left(tree->left);
+	printf("hl %d\n", hl);
 
 	if (tree->right)
 		hr = binary_tree_right(tree->right);
+	printf("hr %d\n", hr);
 
 	if (hl != hr)
 		return (0);
 
 	node = binary_tree_is_full(tree);
+
+	binary_tree_is_perfect(tree->left);
+	binary_tree_is_perfect(tree->right);
 
 	if (node)
 		return (1);
