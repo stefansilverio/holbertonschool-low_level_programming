@@ -27,18 +27,24 @@ int binary_tree_is_perfect(const binary_tree_t *tree)
 /* not checking height of sub-tree */
 size_t binary_tree_height(const binary_tree_t *tree)
 {
-	int hr = 1, hl = 1;
+	int hr = 1, hl = 1, status = 1;
 
+	if (status == 0)
+		return (0);
 	if (tree == NULL)
 		return (0);
 	if (tree->left)
 	{
-		binary_tree_is_full(tree->left);
+		status = binary_tree_is_full(tree->left);
+		if (status == 0)
+			return (0);
 		hl = binary_tree_height(tree->left) + 1;
 	}
 	if (tree->right)
 	{
-		binary_tree_is_full(tree->right);
+		status = binary_tree_is_full(tree->right);
+		if (status == 0)
+			return (0);
 		hr = binary_tree_height(tree->right) + 1;
 	}
 	if (hl > hr)
