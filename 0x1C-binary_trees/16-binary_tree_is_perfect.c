@@ -35,14 +35,14 @@ size_t binary_tree_height(const binary_tree_t *tree)
 		return (0);
 	if (tree->left)
 	{
-		status = binary_tree_is_full(tree->left);
+		status = binary_tree_is_full(tree);
 		if (status == 0)
 			return (0);
 		hl = binary_tree_height(tree->left) + 1;
 	}
 	if (tree->right)
 	{
-		status = binary_tree_is_full(tree->right);
+		status = binary_tree_is_full(tree);
 		if (status == 0)
 			return (0);
 		hr = binary_tree_height(tree->right) + 1;
