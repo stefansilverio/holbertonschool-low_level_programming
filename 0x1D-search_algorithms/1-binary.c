@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include "search_algos.h"
 
+int _split(int *array, size_t hi, size_t low, int value);
+
 /**
  * binary_search - traverse list for value
  * @array: array to be searched
@@ -10,48 +12,56 @@
  *
  * Return: first index where value is located
  */
-/* what if number is not in list? */
 int binary_search(int *array, size_t size, int value)
 {
- 	int mid;
-	size_t idx;
+	int hi = size;
+	int lo = 0;
 
- 	if (array == NULL)
+	if (array == NULL)
 		return (-1);
+	if (array[size - 1] < value || array[0] > value)
+		return (-1);
+	return (_split(array, hi, lo, value));
+}
+
+/**
+ * _split - traverse list for value
+ * @array: array to be searched
+ * @hi: end of list
+ * @low: starting index of list
+ * @value: value to search for
+ *
+ * Return: first index where value is located
+ */
+int _split(int *array, size_t hi, size_t low, int value)
+{
+	size_t idx;
+	int mid = (hi + low) / 2;
+
 	printf("Searching in array: ");
-	for (idx = 0; idx < size; idx++)
+	for (idx = low; idx < hi; idx++)
 	{
 		printf("%d", array[idx]);
-		if (idx + 1 != size)
+		if (idx + 1 != hi)
 			printf(", ");
-	}
-	if (size == 2)
-	{
-		if (array[0] == value)
-			return (0);
-		if (array[1] == value)
-			return (1);
 		else
-			return (-1);
+			printf("\n");
 	}
-	mid = size / 2;
+
 	if (array[mid] == value)
-		return (mid);
-	if (array[mid] > value)
+		return ((unsigned int)mid);
+
+	if (hi == low && array[low] != value)
+		return (-1);
+
+	else if (value > array[mid])
 	{
-		/* recursive call left */
-		printf("\nrecursive call left\n");
-		size = mid;
-		return binary_search(array, size, value);
+		low = mid + 1;
+		return (_split(array, hi, low, value));
 	}
 	else
 	{
-		/* recursive call right */
-		printf("\nrecursive call right\n");
-		array = array + mid;
-		printf("first element in array %d\n", array[0]);
-		size = mid + 1;
-		return binary_search(array, size, value);
+		hi = mid - 1;
+		return (_split(array, hi, low, value));
 	}
-	return (-1);
 }
