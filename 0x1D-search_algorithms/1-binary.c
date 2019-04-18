@@ -14,12 +14,10 @@ int _split(int *array, size_t hi, size_t low, int value);
  */
 int binary_search(int *array, size_t size, int value)
 {
-	int hi = size;
+	int hi = size - 1;
 	int lo = 0;
 
 	if (array == NULL)
-		return (-1);
-	if (array[size - 1] < value || array[0] > value)
 		return (-1);
 	return (_split(array, hi, lo, value));
 }
@@ -30,7 +28,6 @@ int binary_search(int *array, size_t size, int value)
  * @hi: end of list
  * @low: starting index of list
  * @value: value to search for
- *
  * Return: first index where value is located
  */
 int _split(int *array, size_t hi, size_t low, int value)
@@ -39,10 +36,10 @@ int _split(int *array, size_t hi, size_t low, int value)
 	int mid = (hi + low) / 2;
 
 	printf("Searching in array: ");
-	for (idx = low; idx < hi; idx++)
+	for (idx = low; idx <= hi; idx++)
 	{
 		printf("%d", array[idx]);
-		if (idx + 1 != hi)
+		if (idx + 1 <= hi)
 			printf(", ");
 		else
 			printf("\n");
