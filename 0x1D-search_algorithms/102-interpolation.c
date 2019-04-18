@@ -16,10 +16,7 @@ int interpolation_search(int *array, size_t size, int value)
 	if (array == NULL)
 		return (-1);
 	if (size == 0)
-	{
-		printf("Found %d at index: -1\n", value);
 		return (-1);
-	}
 	pos = low + (((double)(high - low) / (array[high] - array[low]))
 		     * (value - array[low]));
 	while (pos >= 0 && (size_t)pos < size) /*low < size && high > 0*/
