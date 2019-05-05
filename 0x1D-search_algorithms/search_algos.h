@@ -10,6 +10,6 @@ int _search(int *array, size_t jump, size_t size, size_t hi, size_t low,
 	    int value);
 int linear_search(int *array, size_t size, int value);
 int binary_search(int *array, size_t size, int value);
-int _split(int *array, size_t hi, size_t low, int value);
+int _split(int *array, int hi, int low, int value);
 
 #endif

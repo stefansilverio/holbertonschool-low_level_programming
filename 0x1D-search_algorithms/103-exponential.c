@@ -1,9 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "search_algos.h"
-#include <math.h>
 
-int _split(int *array, size_t hi, size_t low, int value);
+int _split(int *array, int hi, int low, int value);
 /**
  * exponential_search - implement exponential search
  * @array: ptr to list
@@ -13,24 +12,28 @@ int _split(int *array, size_t hi, size_t low, int value);
  */
 int exponential_search(int *array, size_t size, int value)
 {
-	int expo, hi, lo;
-	size_t idx;
+	int hi = 1, lo = 0;
 
-	if (array == NULL)
-		return (-1);
-
-	for (idx = 0; idx < size; idx++)
+	while (array[hi] < value && (unsigned) hi < size)
 	{
-		expo = pow(2, idx);
-		if ((int)expo > value)
-		{
-			hi = expo;
-			lo = pow(2, idx - 1);
-			printf("lo: %d hi: %d\n", lo, hi);
-			return (0);
-			return (_split(array, hi, lo, value));
-		}
+		printf("Value checked array[%d] = [%d]\n", hi, array[hi]);
+		lo = hi;
+		hi *= 2;
 	}
+
+	if (array[hi] > value)
+	{
+		printf("Value found between indexes [%d] and [%d]\n", lo, hi);
+		return (_split(array, hi, lo, value));
+	}
+
+	else
+	{
+		hi = size - 1;
+		printf("Value found between indexes [%d] and [%d]\n", lo, hi);
+		return (_split(array, hi, lo, value));
+	}
+
 	return (-1);
 }
 
@@ -42,9 +45,9 @@ int exponential_search(int *array, size_t size, int value)
  * @value: value to search for
  * Return: first index where value is located
  */
-int _split(int *array, size_t hi, size_t low, int value)
+int _split(int *array, int hi, int low, int value)
 {
-	size_t idx;
+	int idx;
 	int mid = (hi + low) / 2;
 
 	printf("Searching in array: ");
@@ -58,10 +61,10 @@ int _split(int *array, size_t hi, size_t low, int value)
 	}
 
 	if (array[mid] == value)
-		return ((unsigned int)mid);
+		return (mid);
 
 	if (hi == low && array[low] != value)
-		return (-1);
+		return (-1); /* value not in list */
 
 	else if (value > array[mid])
 	{
