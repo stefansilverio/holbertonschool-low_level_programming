@@ -14,7 +14,7 @@ int exponential_search(int *array, size_t size, int value)
 {
 	int hi = 1, lo = 0;
 
-	while (array[hi] < value && (unsigned) hi < size)
+	while (array[hi] < value && (unsigned int) hi < size)
 	{
 		printf("Value checked array[%d] = [%d]\n", hi, array[hi]);
 		lo = hi;
