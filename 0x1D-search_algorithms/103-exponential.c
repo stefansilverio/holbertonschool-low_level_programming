@@ -14,6 +14,9 @@ int exponential_search(int *array, size_t size, int value)
 {
 	int hi = 1, lo = 0;
 
+	if (array == NULL)
+		return (-1);
+
 	while (array[hi] < value && (unsigned int) hi < size)
 	{
 		printf("Value checked array[%d] = [%d]\n", hi, array[hi]);
@@ -77,4 +80,3 @@ int _split(int *array, int hi, int low, int value)
 		return (_split(array, hi, low, value));
 	}
 }
-
